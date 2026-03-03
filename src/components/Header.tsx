@@ -1,6 +1,9 @@
 import NavBar from "./ui/navbar";
 import { Search } from "lucide-react";
 
+// Adjust this path if your logo is in a different location relative to this file
+import logo7M from '../assets/7m-logo.png'; 
+
 const menus = [
   { id: 1, title: 'Home', url: '/', dropdown: false },
   { id: 2, title: 'About Us', url: '/about', dropdown: false },
@@ -22,28 +25,31 @@ const menus = [
 
 export function Header() {
   return (
-    <header className="bg-white py-5 px-6 sticky top-0 z-50 shadow-sm border-b border-gray-100">
-      <div className="container mx-auto flex justify-between items-center">
+    <header className="bg-white py-2 pl-8 pr-6 lg:pl-16 lg:pr-10 sticky top-0 z-50 shadow-sm border-b border-gray-100">
+      
+      <div className="w-full max-w-[1400px] mx-auto flex justify-between items-center relative">
         
-        {/* Logo */}
-        <div className="flex flex-col items-start cursor-pointer group">
-          <div className="text-5xl font-black text-brand leading-none tracking-tighter italic group-hover:scale-105 transition-transform">
-            7M
-          </div>
-          <div className="text-xs font-bold tracking-widest text-gray-800 uppercase mt-1">
+        {/* LOGO SECTION */}
+        <div className="flex items-center cursor-pointer group gap-1.5 z-10">
+          <img 
+            src={logo7M} 
+            alt="7M Accessories Brand Logo" 
+            className="h-14 w-14 rounded-full object-cover border border-slate-200 shadow-inner group-hover:scale-105 transition-transform"
+          />
+          <div className="text-sm md:text-base font-bold tracking-widest text-[#1F1F69] uppercase mt-1 whitespace-nowrap">
            ACCESSORIES
           </div>
         </div>
 
-        {/* Framer Motion Navbar */}
-        <div className="hidden lg:block">
+        {/* NAVBAR SECTION */}
+        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-max z-10">
             <NavBar list={menus} />
         </div>
 
-        {/* Right Action (Search Only) */}
-        <div className="flex items-center gap-2 cursor-pointer text-gray-800 hover:text-brand transition-colors group">
+        {/* SEARCH SECTION */}
+        <div className="flex items-center justify-end gap-2 cursor-pointer text-[#1F1F69] hover:text-blue-800 transition-colors group z-10">
           <Search className="w-5 h-5 group-hover:scale-110 transition-transform" /> 
-          <span className="font-bold text-sm tracking-wider uppercase">Search</span>
+          <span className="font-bold text-sm tracking-wider uppercase whitespace-nowrap">Search</span>
         </div>
         
       </div>
