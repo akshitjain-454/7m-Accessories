@@ -178,9 +178,9 @@ export function Hero3D() {
       {/* Hero Content Overlay */}
       <div className="absolute top-16 left-0 w-full text-center z-20 pointer-events-none px-6">
         <h1 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase">
-          <span className="text-[#1F1F69] drop-shadow-[0_0_10px_rgba(31,31,105,0.8)]">7M</span> ACCESSORIES
+          <span className="text-white drop-shadow-[0_0_10px_rgba(31,31,105,0.8)]">7M</span> ACCESSORIES
         </h1>
-        <p className="text-[#3b82f6] text-sm md:text-base font-bold tracking-[0.4em] mt-2 uppercase opacity-80">
+        <p className="text-white text-sm md:text-base font-bold tracking-[0.4em] mt-2 uppercase opacity-80">
           Precision Engineering — Pro Series
         </p>
       </div>
@@ -193,8 +193,8 @@ export function Hero3D() {
           { label: "LIFETIME", val: "50,000H" }
         ].map((stat, i) => (
           <div key={i} className="text-center">
-            <p className="text-[#1F1F69] font-black text-xl md:text-2xl italic leading-none">{stat.val}</p>
-            <p className="text-white/40 text-[10px] tracking-widest font-bold mt-1 uppercase">{stat.label}</p>
+            <p className="text-white font-black text-xl md:text-2xl italic leading-none">{stat.val}</p>
+            <p className="text-white text-[10px] tracking-widest font-bold mt-1 uppercase">{stat.label}</p>
           </div>
         ))}
       </div>
