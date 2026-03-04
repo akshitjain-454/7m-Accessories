@@ -33,7 +33,8 @@ const NavBar: React.FC<NavBarProps> = ({ list }) => {
                   href={item.url}
                   className={`
                     relative flex items-center justify-center overflow-hidden rounded-full 
-                    px-6 py-2 transition-all font-bold text-xs uppercase tracking-widest
+                    /* UPDATED: Broader padding, font-black (900), and text-sm */
+                    px-7 py-2.5 transition-all font-black text-sm uppercase tracking-wide
                     border border-transparent
                     ${hovered === item.id ? 'text-white' : 'text-[#1F1F69]'}
                   `}
@@ -62,12 +63,18 @@ const NavBar: React.FC<NavBarProps> = ({ list }) => {
                       exit={{ y: 10, opacity: 0 }}
                       className="absolute left-0 top-full pt-4 z-50"
                     >
+                      {/* Increased shadow and border refinement */}
                       <div className="flex w-64 flex-col rounded-xl bg-white border border-gray-100 shadow-2xl overflow-hidden p-2">
                         {item.items?.map((nav) => (
                           <a
                             key={`link-${nav.id}`}
                             href={nav.url}
-                            className="w-full px-4 py-3 rounded-lg hover:bg-[#1F1F69] hover:text-white text-xs font-bold text-[#1F1F69] transition-all uppercase tracking-tight"
+                            className={`
+                                w-full px-4 py-3 rounded-lg transition-all uppercase tracking-tight
+                                hover:bg-[#1F1F69] hover:text-white 
+                                /* UPDATED: text-sm and font-black for dropdown items */
+                                text-sm font-black text-[#1F1F69]
+                            `}
                           >
                             {nav.title}
                           </a>

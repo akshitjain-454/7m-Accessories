@@ -30,30 +30,30 @@ export function Header() {
       {/* SOLID BRAND ACCENT STRIPE */}
       <div className="w-full h-[3px] bg-[#1F1F69]"></div>
 
-      <div className="py-3 pl-8 pr-6 lg:pl-16 lg:pr-10 w-full max-w-[1400px] mx-auto flex justify-between items-center relative">
+      <div className="py-3 pl-8 pr-8 w-full max-w-[1400px] mx-auto flex justify-between items-center relative">
         
-        {/* LOGO SECTION */}
-        <div className="flex items-center cursor-pointer group gap-1.5 z-10">
+        {/* LOGO SECTION - Restored Original Spacing */}
+        <div className="flex items-center cursor-pointer group gap-2 z-10">
           <img 
             src={logo7M} 
             alt="7M Accessories" 
             className="h-12 w-12 rounded-full object-cover border border-slate-200 shadow-inner group-hover:scale-105 transition-transform"
           />
-          <div className="text-sm md:text-base font-bold tracking-widest text-[#1F1F69] uppercase mt-1 whitespace-nowrap">
+          <div className="text-sm md:text-base font-black tracking-widest text-[#1F1F69] uppercase mt-1 whitespace-nowrap">
            7M ACCESSORIES
           </div>
         </div>
 
-        {/* NAVBAR SECTION */}
+        {/* NAVBAR SECTION - Restored Perfect Center (left-1/2) */}
         <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-max z-10">
             <NavBar list={menus} />
         </div>
 
-        {/* SEARCH AS A FILLED PILL BUTTON */}
+        {/* SEARCH PILL - Restored Original Scaling */}
         <div className="z-10">
-          <button className="flex items-center gap-2 bg-[#1F1F69] text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-all active:scale-95 group">
+          <button className="flex items-center gap-2 bg-[#1F1F69] text-white px-6 py-2.5 rounded-full hover:opacity-90 transition-all active:scale-95 group shadow-lg shadow-[#1F1F69]/20">
             <Search className="w-4 h-4" /> 
-            <span className="font-bold text-xs tracking-wider uppercase">Search</span>
+            <span className="font-black text-sm tracking-wide uppercase">Search</span>
           </button>
         </div>
         
