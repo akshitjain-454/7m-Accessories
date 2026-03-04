@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="bg-white text-gray-900 antialiased font-sans flex flex-col min-h-screen">
       <Header />
+      <Hero3D />
       <main className="flex-grow">
-        <Hero3D /> {/* <--- Use it here */}
         <Locations />
       </main>
       <Footerdemo />
