@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, MotionConfig } from 'framer-motion';
+import { motion, MotionConfig, AnimatePresence } from 'framer-motion';
 
 interface NavBarItem {
   id: string | number;
@@ -14,68 +14,68 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ list }) => {
-  const [hovered, setHovered] = useState(null);
+  const [hovered, setHovered] = useState<string | number | null>(null);
 
   return (
-    <MotionConfig transition={{ bounce: 0, type: 'tween' }}>
-      <nav className={'relative'}>
-        <ul className={'flex items-center gap-2'}>
+    <MotionConfig transition={{ duration: 0.3, ease: "easeInOut" }}>
+      <nav className="relative">
+        <ul className="flex items-center gap-2">
           {list?.map((item) => {
             return (
-              <li key={item.id} className={'relative'}>
+              <li 
+                key={item.id} 
+                className="relative"
+                onMouseEnter={() => setHovered(item.id)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                {/* INTERACTIVE HOVER BUTTON LOGIC */}
                 <a
+                  href={item.url}
                   className={`
-                    relative flex items-center justify-center rounded px-6 py-2 transition-all font-bold text-sm uppercase tracking-wide
-                    hover:text-brand text-gray-800
-                    ${hovered === item?.id ? 'text-brand' : ''}
+                    relative flex items-center justify-center overflow-hidden rounded-full 
+                    px-6 py-2 transition-all font-bold text-xs uppercase tracking-widest
+                    border border-transparent
+                    ${hovered === item.id ? 'text-white' : 'text-[#1F1F69]'}
                   `}
-                  onMouseEnter={() => setHovered(item.id)}
-                  onMouseLeave={() => setHovered(null)}
-                  href={item?.url}
                 >
-                  {item?.title}
-                </a>
-                
-                {/* Animated underline cursor */}
-                {hovered === item?.id && !item?.dropdown && (
+                  {/* The Background Fill Circle */}
                   <motion.div
-                    layout
-                    layoutId={`cursor`}
-                    className={'absolute h-0.5 w-full bg-brand bottom-0 left-0'}
+                    className="absolute z-0 bg-[#1F1F69] rounded-full"
+                    initial={false}
+                    animate={{
+                      width: hovered === item.id ? "200%" : "0%",
+                      height: hovered === item.id ? "300%" : "0%",
+                    }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
                   />
-                )}
+
+                  {/* The Text - Needs z-10 to stay above the fill */}
+                  <span className="relative z-10">{item.title}</span>
+                </a>
 
                 {/* Dropdown Menu */}
-                {item?.dropdown && hovered === item?.id && (
-                  <div
-                    className='absolute left-0 top-full pt-4 z-50'
-                    onMouseEnter={() => setHovered(item.id)}
-                    onMouseLeave={() => setHovered(null)}
-                  >
+                <AnimatePresence>
+                  {item.dropdown && hovered === item.id && (
                     <motion.div
-                      layout
-                      transition={{ bounce: 0 }}
                       initial={{ y: 10, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       exit={{ y: 10, opacity: 0 }}
-                      style={{ borderRadius: '8px' }}
-                      className='flex w-64 flex-col rounded-md bg-white border border-gray-100 shadow-xl overflow-hidden'
-                      layoutId={'cursor'}
+                      className="absolute left-0 top-full pt-4 z-50"
                     >
-                      {item?.items?.map((nav) => {
-                        return (
-                          <motion.a
-                            key={`link-${nav?.id}`}
-                            href={`${nav?.url}`}
-                            className={'w-full p-4 hover:bg-gray-50 text-sm font-semibold text-gray-700 hover:text-brand transition-colors'}
+                      <div className="flex w-64 flex-col rounded-xl bg-white border border-gray-100 shadow-2xl overflow-hidden p-2">
+                        {item.items?.map((nav) => (
+                          <a
+                            key={`link-${nav.id}`}
+                            href={nav.url}
+                            className="w-full px-4 py-3 rounded-lg hover:bg-[#1F1F69] hover:text-white text-xs font-bold text-[#1F1F69] transition-all uppercase tracking-tight"
                           >
-                            {nav?.title}
-                          </motion.a>
-                        );
-                      })}
+                            {nav.title}
+                          </a>
+                        ))}
+                      </div>
                     </motion.div>
-                  </div>
-                )}
+                  )}
+                </AnimatePresence>
               </li>
             );
           })}

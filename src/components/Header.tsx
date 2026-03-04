@@ -1,7 +1,7 @@
+"use client";
+
 import NavBar from "./ui/navbar";
 import { Search } from "lucide-react";
-
-// Adjust this path if your logo is in a different location relative to this file
 import logo7M from '../assets/7m-logo.png'; 
 
 const menus = [
@@ -25,19 +25,22 @@ const menus = [
 
 export function Header() {
   return (
-    <header className="bg-white py-2 pl-8 pr-6 lg:pl-16 lg:pr-10 sticky top-0 z-50 shadow-sm border-b border-gray-100">
+    <header className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
       
-      <div className="w-full max-w-[1400px] mx-auto flex justify-between items-center relative">
+      {/* SOLID BRAND ACCENT STRIPE */}
+      <div className="w-full h-[3px] bg-[#1F1F69]"></div>
+
+      <div className="py-3 pl-8 pr-6 lg:pl-16 lg:pr-10 w-full max-w-[1400px] mx-auto flex justify-between items-center relative">
         
         {/* LOGO SECTION */}
         <div className="flex items-center cursor-pointer group gap-1.5 z-10">
           <img 
             src={logo7M} 
-            alt="7M Accessories Brand Logo" 
-            className="h-14 w-14 rounded-full object-cover border border-slate-200 shadow-inner group-hover:scale-105 transition-transform"
+            alt="7M Accessories" 
+            className="h-12 w-12 rounded-full object-cover border border-slate-200 shadow-inner group-hover:scale-105 transition-transform"
           />
           <div className="text-sm md:text-base font-bold tracking-widest text-[#1F1F69] uppercase mt-1 whitespace-nowrap">
-           ACCESSORIES
+           7M ACCESSORIES
           </div>
         </div>
 
@@ -46,13 +49,17 @@ export function Header() {
             <NavBar list={menus} />
         </div>
 
-        {/* SEARCH SECTION */}
-        <div className="flex items-center justify-end gap-2 cursor-pointer text-[#1F1F69] hover:text-blue-800 transition-colors group z-10">
-          <Search className="w-5 h-5 group-hover:scale-110 transition-transform" /> 
-          <span className="font-bold text-sm tracking-wider uppercase whitespace-nowrap">Search</span>
+        {/* SEARCH AS A FILLED PILL BUTTON */}
+        <div className="z-10">
+          <button className="flex items-center gap-2 bg-[#1F1F69] text-white px-5 py-2.5 rounded-full hover:opacity-90 transition-all active:scale-95 group">
+            <Search className="w-4 h-4" /> 
+            <span className="font-bold text-xs tracking-wider uppercase">Search</span>
+          </button>
         </div>
         
       </div>
     </header>
   );
 }
+
+export default Header;

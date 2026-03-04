@@ -60,8 +60,17 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
-  	}
-  },
+		},
+		animation: {
+			'shimmer-slide': 'shimmer 3s infinite linear',
+		},
+		keyframes: {
+			shimmer: {
+				'0%': { backgroundPosition: '200% 0' },
+				'100%': { backgroundPosition: '-200% 0' },
+			},
+		},
+	},
+ },
   plugins: [require("tailwindcss-animate")],
 }
